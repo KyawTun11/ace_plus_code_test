@@ -18,26 +18,30 @@ class HomeView extends StatelessWidget {
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
-              : ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: controller.userModel.length,
-                  itemBuilder: (context, index) {
-                    var user = controller.userModel[index];
-                    return UserWidget(
-                      name: 'Name : ${user.name}',
-                      email: 'Email : ${user.email}',
-                      phone: 'Phone : ${user.phone}',
-                      webSite: 'WebSite : ${user.website}',
-                      address:
-                          'Address : ${user.address!.street}, ${user.address!.suite}, ${user.address!.city}',
-                      onTap: () {
-                        Get.toNamed(
-                          Routes.DETAIL,
-                          arguments: user,
+              : controller.userModel.isEmpty
+                  ? const Center(
+                      child: Text("No user data to show!"),
+                    )
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: controller.userModel.length,
+                      itemBuilder: (context, index) {
+                        var user = controller.userModel[index];
+                        return UserWidget(
+                          name: 'Name : ${user.name}',
+                          email: 'Email : ${user.email}',
+                          phone: 'Phone : ${user.phone}',
+                          webSite: 'WebSite : ${user.website}',
+                          address:
+                              'Address : ${user.address!.street}, ${user.address!.suite}, ${user.address!.city}',
+                          onTap: () {
+                            Get.toNamed(
+                              Routes.DETAIL,
+                              arguments: user,
+                            );
+                          },
                         );
-                      },
-                    );
-                  });
+                      });
         },
       ),
     );

@@ -12,7 +12,9 @@ dependencies:
   pretty_dio_logger: ^1.1.1
   json_annotation: ^4.7.0
   flutter_easyloading: ^3.0.5
+  connectivity_plus: ^3.0.2
   dio: ^4.0.6
+  get_storage: ^2.0.3
   flutter: 
     sdk: flutter
 
